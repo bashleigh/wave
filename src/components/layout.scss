@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Roboto:wght@300&display=swap');
+
+body {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+button {
+  background: rgb(119, 0, 255);
+  border: none;
+  border-radius: .5em;
+  padding: 1em 1.5em;
+  cursor: pointer;
+  color: white;
+}
+
+.title {
+  font-family: 'Odibee Sans', cursive;
+  color: #03ea0c;
+
+  .symbol {
+    font-family: 'Roboto', sans-serif;
+  }
+}
+
+header.navbar {
+  display: flex;
+  background:rgb(119, 0, 255);
+  color: white;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 3em;
+  padding-right: 3em;
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding: .5em;
+  }
+
+  .navbar-right {
+    margin-left: auto;
+    justify-self: flex-end;
+  }
+
+  .navbar-start {
+    margin-right: 2em;
+  }
+}
