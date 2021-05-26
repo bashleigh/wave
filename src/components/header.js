@@ -4,7 +4,9 @@ import * as React from "react"
 const Header = () => (
   <header className="navbar">
     <div className="navbar-start">
-      <h2 className="title"><span className="symbol">Ψ</span> Wave</h2>
+      <h2 className="title">
+        <span className="symbol">Ψ</span> Wave
+      </h2>
     </div>
     <Link to="/fundimentals">Fundimentals</Link>
     <Link to="/elements">Elements</Link>

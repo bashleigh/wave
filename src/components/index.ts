@@ -1,1 +1,1 @@
-export * from './fundimental'
+export * from "./fundimental"

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 import {
   Electron,
   UpQuark,
@@ -30,10 +30,10 @@ import {
   PositiveWBoson,
   NegativeWBoson,
   ParticleType,
-} from 'wave-func'
-import Layout from '../components/layout'
-import { Fundimental } from './../components'
-import './fundimentals.scss'
+} from "wave-func"
+import Layout from "../components/layout"
+import { Fundimental } from "./../components"
+import "./fundimentals.scss"
 
 const fundimentalParticles = [
   new UpQuark(),
@@ -72,44 +72,103 @@ const bosons = [
 ]
 
 export default () => {
+  const [displayType, setDisplayType] = useState<"grid" | "singular">("grid")
+  const [singularParticle, setSingularParticle] = useState<undefined | number>()
+  const [displayAntiMatter, setDisplayAntiMatter] = useState<boolean>(false)
 
-  const [displayType, setDisplayType] = useState<'grid' | 'singular'>('grid');
-  const [singularParticle, setSingularParticle] = useState<undefined | string>();
-  const [displayAntiMatter, setDisplayAntiMatter] = useState<boolean>(false);
-  
+  if (singularParticle) {
+    return (
+      <Layout>
+        <div className="singular-particle-box">
+          <div
+            className="button"
+            onClick={event => {
+              event.preventDefault()
+              singularParticle > 0 && setSingularParticle(singularParticle - 1)
+            }}
+          >
+            prev
+          </div>
+          <Fundimental
+            onClick={() => {}}
+            particle={fundimentalParticles[singularParticle]}
+          />
+          <div
+            className="button"
+            onClick={event => {
+              event.preventDefault()
+              singularParticle < fundimentalParticles.length &&
+                setSingularParticle(singularParticle + 1)
+            }}
+          >
+            next
+          </div>
+        </div>
+      </Layout>
+    )
+  }
+
   return (
     <Layout>
       <h1 className="title">The Fundimental Particles</h1>
-      <button onClick={event => {
-        event.preventDefault();
-        setDisplayAntiMatter(!displayAntiMatter);
-      }}>Anti Matter</button>
+      <button
+        onClick={event => {
+          event.preventDefault()
+          setDisplayAntiMatter(!displayAntiMatter)
+        }}
+      >
+        Anti Matter
+      </button>
       <h1 className="title">Fermions</h1>
       <h3 className="title">Quarks</h3>
       <div className={`particles-box display-type-${displayType}`}>
-        {fundimentalParticles.filter(particle => particle.antiMatter === displayAntiMatter && particle.type === ParticleType.QUARK).map(particle => (
-          <Fundimental onClick={() => {
-            setDisplayType('singular');
-            setSingularParticle(particle.name);
-          }} key={particle.name} particle={particle} />
-        ))}
+        {fundimentalParticles
+          .filter(
+            particle =>
+              particle.antiMatter === displayAntiMatter &&
+              particle.type === ParticleType.QUARK
+          )
+          .map((particle, index) => (
+            <Fundimental
+              onClick={() => {
+                setDisplayType("singular")
+                setSingularParticle(index)
+              }}
+              key={particle.name}
+              particle={particle}
+            />
+          ))}
       </div>
       <h3 className="title">Leptons</h3>
       <div className={`particles-box display-type-${displayType}`}>
-        {fundimentalParticles.filter(particle => particle.antiMatter === displayAntiMatter && particle.type === ParticleType.LEPTON).map(particle => (
-          <Fundimental onClick={() => {
-            setDisplayType('singular');
-            setSingularParticle(particle.name);
-          }} key={particle.name} particle={particle} />
-        ))}
+        {fundimentalParticles
+          .filter(
+            particle =>
+              particle.antiMatter === displayAntiMatter &&
+              particle.type === ParticleType.LEPTON
+          )
+          .map((particle, index) => (
+            <Fundimental
+              onClick={() => {
+                setDisplayType("singular")
+                setSingularParticle(index)
+              }}
+              key={particle.name}
+              particle={particle}
+            />
+          ))}
       </div>
       <h1 className="title">Bosons</h1>
       <div className="bosons-box">
-      {bosons.map(particle => (
-          <Fundimental onClick={() => {
-            setDisplayType('singular');
-            setSingularParticle(particle.name);
-          }} key={particle.name} particle={particle} />
+        {bosons.map(particle => (
+          <Fundimental
+            onClick={() => {
+              setDisplayType("singular")
+              // setSingularParticle(particle);
+            }}
+            key={particle.name}
+            particle={particle}
+          />
         ))}
       </div>
     </Layout>
