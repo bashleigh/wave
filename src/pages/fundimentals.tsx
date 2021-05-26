@@ -29,7 +29,9 @@ import {
   Gluon,
   PositiveWBoson,
   NegativeWBoson,
+  ParticleType,
 } from 'wave-func'
+import Layout from '../components/layout'
 import { Fundimental } from './../components'
 import './fundimentals.scss'
 
@@ -76,22 +78,32 @@ export default () => {
   const [displayAntiMatter, setDisplayAntiMatter] = useState<boolean>(false);
   
   return (
-    <>
-      <h1>The Fundimental Particles</h1>
+    <Layout>
+      <h1 className="title">The Fundimental Particles</h1>
       <button onClick={event => {
         event.preventDefault();
         setDisplayAntiMatter(!displayAntiMatter);
       }}>Anti Matter</button>
-      <h1>Fermions</h1>
+      <h1 className="title">Fermions</h1>
+      <h3 className="title">Quarks</h3>
       <div className={`particles-box display-type-${displayType}`}>
-        {fundimentalParticles.filter(particle => particle.antiMatter === displayAntiMatter).map(particle => (
+        {fundimentalParticles.filter(particle => particle.antiMatter === displayAntiMatter && particle.type === ParticleType.QUARK).map(particle => (
           <Fundimental onClick={() => {
             setDisplayType('singular');
             setSingularParticle(particle.name);
           }} key={particle.name} particle={particle} />
         ))}
       </div>
-      <h1>Bosons</h1>
+      <h3 className="title">Leptons</h3>
+      <div className={`particles-box display-type-${displayType}`}>
+        {fundimentalParticles.filter(particle => particle.antiMatter === displayAntiMatter && particle.type === ParticleType.LEPTON).map(particle => (
+          <Fundimental onClick={() => {
+            setDisplayType('singular');
+            setSingularParticle(particle.name);
+          }} key={particle.name} particle={particle} />
+        ))}
+      </div>
+      <h1 className="title">Bosons</h1>
       <div className="bosons-box">
       {bosons.map(particle => (
           <Fundimental onClick={() => {
@@ -100,6 +112,6 @@ export default () => {
           }} key={particle.name} particle={particle} />
         ))}
       </div>
-    </>
+    </Layout>
   )
 }
