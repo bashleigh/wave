@@ -24,6 +24,11 @@ import {
   AntiMuon,
   TauAntiNeutrino,
   MuonAntiNeutrino,
+  Photon,
+  ZBoson,
+  Gluon,
+  PositiveWBoson,
+  NegativeWBoson,
 } from 'wave-func'
 import { Fundimental } from './../components'
 import './fundimentals.scss'
@@ -56,6 +61,14 @@ const fundimentalParticles = [
   new MuonAntiNeutrino(),
 ]
 
+const bosons = [
+  new Photon(),
+  new Gluon(),
+  new ZBoson(),
+  new PositiveWBoson(),
+  new NegativeWBoson(),
+]
+
 export default () => {
 
   const [displayType, setDisplayType] = useState<'grid' | 'singular'>('grid');
@@ -69,8 +82,18 @@ export default () => {
         event.preventDefault();
         setDisplayAntiMatter(!displayAntiMatter);
       }}>Anti Matter</button>
+      <h1>Fermions</h1>
       <div className={`particles-box display-type-${displayType}`}>
         {fundimentalParticles.filter(particle => particle.antiMatter === displayAntiMatter).map(particle => (
+          <Fundimental onClick={() => {
+            setDisplayType('singular');
+            setSingularParticle(particle.name);
+          }} key={particle.name} particle={particle} />
+        ))}
+      </div>
+      <h1>Bosons</h1>
+      <div className="bosons-box">
+      {bosons.map(particle => (
           <Fundimental onClick={() => {
             setDisplayType('singular');
             setSingularParticle(particle.name);

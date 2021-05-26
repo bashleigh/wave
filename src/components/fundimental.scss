@@ -6,6 +6,8 @@
   border-radius: 1em;
   position: relative;
   margin: 1em;
+  background: rgb(231, 231, 231);
+  width: 30vw;
 
   .title {
     text-transform: capitalize;
@@ -16,5 +18,25 @@
     font-weight: bold;
     text-align: center;
     padding: .5em;
+  }
+
+  &.is-lepton {
+    border-color: green;
+
+    &.is-antimatter {
+      border-color: yellow;
+    }
+  }
+
+  &.is-gauge-boson {
+    border-color: rgb(128, 0, 38);
+  }
+
+  &.is-quark {
+    border-color: rgb(245, 245, 245);
+
+    &.is-antimatter {
+      border-color: rgb(65, 65, 65);
+    }
   }
 }

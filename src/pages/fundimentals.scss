@@ -1,4 +1,8 @@
-.particles-box {
+body {
+  background: #353535;
+}
+
+.particles-box, .bosons-box {
   display: flex;
   flex-wrap: wrap;
 }
