@@ -12645,10 +12645,10 @@ watchpack@^2.0.0:
     glob-to-regexp "^0.4.1"
     graceful-fs "^4.1.2"
 
-wave-func@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/wave-func/-/wave-func-1.0.6.tgz#535df0d26ab21ec8f285e808b66665c85a9f0a9e"
-  integrity sha512-dG9NlSs1rMukdaM1cuNOkoopjXFvto4HSCCa04+IuTQEXuCLVbLfgbc/hA+bLXHQSTmgfx52gvbLYWpTl2eOSw==
+wave-func@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/wave-func/-/wave-func-1.0.8.tgz#3e1d25d669ede0e4e82d574b877a1d280326dfd0"
+  integrity sha512-B49obrh7Z5dGM6DD+U1DYlX/E9WcmWxednqhzEsHTCF40nlpoCOm99rJMyuQgbcpndPEcu000VZACTGQnCqFNQ==
 
 wbuf@^1.1.0, wbuf@^1.7.3:
   version "1.7.3"
